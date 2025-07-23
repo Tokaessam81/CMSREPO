@@ -8,16 +8,17 @@ using System.Threading.Tasks;
 
 namespace CMS.Core.Domain.Entities
 {
-    public class Course: BaseEntity
+    public abstract class UserBase : BaseEntity
     {
         [Required]
         [MaxLength(100)]
         [MinLength(3)]
-        public string Title { get; set; }
-        public string? Description { get; set; }
-        [ForeignKey("Category")]
-        public int? CategoryId { get; set; }
-        public Category? Category { get; set; }
-        public ICollection<Group> Groups { get; set; } = new List<Group>();
+        public string FullName { get; set; } = string.Empty;
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; } = string.Empty;
+        [Required]
+        [Phone]
+        public string Phone { get; set; } = string.Empty;
     }
 }

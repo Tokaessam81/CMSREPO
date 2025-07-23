@@ -7,13 +7,15 @@ using System.Threading.Tasks;
 
 namespace CMS.Core.Domain.Entities
 {
-    public class Category: BaseEntity
+
+    public class Role
     {
+        [Key]
+        public int Id { get; set; }
         [Required]
-        [MaxLength(100)]
+        [MaxLength(50)]
         [MinLength(3)]
-        public string Name { get; set; }
-        public string? Description { get; set; }
-        public ICollection<Course> Courses { get; set; } = new List<Course>();
+        public string Name { get; set; } = string.Empty;
+        public ICollection<UserBase> Users { get; set; } = new List<UserBase>();
     }
 }

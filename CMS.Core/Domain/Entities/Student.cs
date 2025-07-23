@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CMS.Core.Domain.Entities
 {
-    public class Student 
+    public class Student :UserBase
     {
-        public int Id { get; set; }
-        public string FullName { get; set; } = string.Empty;
-        public string Email { get; set; } = string.Empty;
-        public string Phone { get; set; } = string.Empty;
+        [Required]
         public string PasswordHash { get; set; } = string.Empty;
+        [Required]
+        [MaxLength(100)]
+        [MinLength(3)]
         public string Faculty { get; set; } = string.Empty;
         public bool IsGraduated { get; set; } = false;
         public DateTime? BirthDate { get; set; } = null;
@@ -20,7 +22,5 @@ namespace CMS.Core.Domain.Entities
         public ICollection<Solution> Solutions { get; set; } = new List<Solution>();
         public ICollection<Attendance> Attendances { get; set; } = new List<Attendance>();
         public ICollection<Payment> Payments { get; set; } = new List<Payment>();
-
-
     }
 }
